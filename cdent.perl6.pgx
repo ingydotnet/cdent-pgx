@@ -1,0 +1,21 @@
+%grammar cdent-perl6
+%extends cdent-base
+%version 0.0.1
+
+line_comment_start: /<HASH>/
+
+doc_comment_begin: /<HASH>{3}<BREAK>/
+doc_comment_line: /<HASH><SPACE>?(<ANY>*<BREAK>)/
+doc_comment_end: /<HASH>{3}<SPACE>/
+
+include_runtime: /use CDent;/
+
+class_start: /class<SPACE>~(<Id>)<WS>~<LCURLY><BREAK>/
+
+class_end: /<RCURLY><BREAK>/
+
+method_start: /method<SPACE>~(<Id>)<SPACE>~<LCURLY><BREAK>/
+
+method_end: /<RCURLY><BREAK>/
+
+println: /say<SPACE>~(<ANY>+)<SEMI><BREAK>/
