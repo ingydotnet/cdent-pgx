@@ -6,7 +6,8 @@ module:
     <doc_comment>?
     <comment>*
     <include_runtime>?
-    <class>+ %%% <comment>*
+    <comment>*
+    <class>+ %% <comment>*
     <module_end>
     <comment>*
 
@@ -22,7 +23,8 @@ class:
 
 class_body:
     <indent>
-    <method>+ %%% <comment>*
+    <comment>*
+    <method>+ %% <comment>*
     <undent>
 
 method:
@@ -32,7 +34,8 @@ method:
 
 method_body:
     <indent>
-    <statement>+ %%% <comment>*
+    <comment>*
+    <statement>+ %% <comment>*
 
 statement: [ <println> | <comment> ]
 
