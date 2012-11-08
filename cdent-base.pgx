@@ -2,44 +2,44 @@
 %version 0.0.1
 
 module:
-    <module_start>
-    <doc_comment>?
-    <comment>*
-    <include_runtime>?
-    <comment>*
-    <class>+ %% <comment>*
-    <module_end>
-    <comment>*
+    module_start
+    doc_comment?
+    comment*
+    include_runtime?
+    comment*
+    class+ %% comment*
+    module_end
+    comment*
 
 doc_comment:
-    <doc_comment_begin>
-    [ !<doc_comment_end> <doc_comment_line> ]*
-    <doc_comment_end>
+    doc_comment_begin
+    ( !doc_comment_end doc_comment_line )*
+    doc_comment_end
 
 class:
-    <class_start>
-    <class_body>
-    <class_end>
+    class_start
+    class_body
+    class_end
 
 class_body:
-    <indent>
-    <comment>*
-    <method>+ %% <comment>*
-    <undent>
+    indent
+    comment*
+    method+ %% comment*
+    undent
 
 method:
-    <method_start>
-    <method_body>
-    <method_end>
+    method_start
+    method_body
+    method_end
 
 method_body:
-    <indent>
-    <comment>*
-    <statement>+ %% <comment>*
+    indent
+    comment*
+    statement+ %% comment*
 
-statement: [ <println> | <comment> ]
+statement: ( println | comment )
 
-comment: [ <line_comment> | <blank_line> ]
+comment: ( line_comment | blank_line )
 
 line_comment: /<line_comment_start>(<line>)/
 
@@ -50,3 +50,4 @@ module_start: //
 module_end: //
 
 id: /<WORD>+/
+line_comment_start: /xxx/ # XXX bogus for now.
