@@ -1,0 +1,9 @@
+{
+   "+extends" : "cdent-base",
+   "+grammar" : "cdent-perl6",
+   "+toprule" : "line_comment_start",
+   "+version" : "0.0.1",
+   "line_comment_start" : {
+      ".rgx" : "\\#"
+   }
+}

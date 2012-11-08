@@ -1,0 +1,167 @@
+{
+   "+grammar" : "cdent-base",
+   "+toprule" : "module",
+   "+version" : "0.0.1",
+   "blank_line" : {
+      ".rgx" : "\\s*\\r?\\n"
+   },
+   "class" : {
+      ".all" : [
+         {
+            ".ref" : "class_start"
+         },
+         {
+            ".ref" : "class_body"
+         },
+         {
+            ".ref" : "class_end"
+         }
+      ]
+   },
+   "class_body" : {
+      ".all" : [
+         {
+            ".ref" : "indent"
+         },
+         {
+            "+min" : 0,
+            ".ref" : "comment"
+         },
+         {
+            "+min" : 1,
+            ".ref" : "method",
+            ".sep" : {
+               "+eok" : 1,
+               "+min" : 0,
+               ".ref" : "comment"
+            }
+         },
+         {
+            ".ref" : "undent"
+         }
+      ]
+   },
+   "comment" : {
+      ".any" : [
+         {
+            ".ref" : "line_comment"
+         },
+         {
+            ".ref" : "blank_line"
+         }
+      ]
+   },
+   "doc_comment" : {
+      ".all" : [
+         {
+            ".ref" : "doc_comment_begin"
+         },
+         {
+            "+min" : 0,
+            ".all" : [
+               {
+                  "+asr" : -1,
+                  ".ref" : "doc_comment_end"
+               },
+               {
+                  ".ref" : "doc_comment_line"
+               }
+            ]
+         },
+         {
+            ".ref" : "doc_comment_end"
+         }
+      ]
+   },
+   "line_comment" : {
+      ".rgx" : "xxx(.*\\r?\\n)"
+   },
+   "method" : {
+      ".all" : [
+         {
+            ".ref" : "method_start"
+         },
+         {
+            ".ref" : "method_body"
+         },
+         {
+            ".ref" : "method_end"
+         }
+      ]
+   },
+   "method_body" : {
+      ".all" : [
+         {
+            ".ref" : "indent"
+         },
+         {
+            "+min" : 0,
+            ".ref" : "comment"
+         },
+         {
+            "+min" : 1,
+            ".ref" : "statement",
+            ".sep" : {
+               "+eok" : 1,
+               "+min" : 0,
+               ".ref" : "comment"
+            }
+         }
+      ]
+   },
+   "module" : {
+      ".all" : [
+         {
+            ".ref" : "module_start"
+         },
+         {
+            "+max" : 1,
+            ".ref" : "doc_comment"
+         },
+         {
+            "+min" : 0,
+            ".ref" : "comment"
+         },
+         {
+            "+max" : 1,
+            ".ref" : "include_runtime"
+         },
+         {
+            "+min" : 0,
+            ".ref" : "comment"
+         },
+         {
+            "+min" : 1,
+            ".ref" : "class",
+            ".sep" : {
+               "+eok" : 1,
+               "+min" : 0,
+               ".ref" : "comment"
+            }
+         },
+         {
+            ".ref" : "module_end"
+         },
+         {
+            "+min" : 0,
+            ".ref" : "comment"
+         }
+      ]
+   },
+   "module_end" : {
+      ".rgx" : ""
+   },
+   "module_start" : {
+      ".rgx" : ""
+   },
+   "statement" : {
+      ".any" : [
+         {
+            ".ref" : "println"
+         },
+         {
+            ".ref" : "comment"
+         }
+      ]
+   }
+}
